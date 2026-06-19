@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NVDA Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg-color:#eef2f7;
+    --text-color:#4a5568;
+    --soft-shadow-dark: 8px 8px 16px rgba(163, 177, 198, 0.5);
+    --soft-shadow-light: -8px -8px 16px rgba(255, 255, 255, 0.8);
+    --soft-shadow-inset: inset 4px 4px 8px rgba(163, 177, 198, 0.5), inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+
+    --bg:var(--bg-color);
+    --card:var(--bg-color);
+    --text:var(--text-color);
+    --muted:#8a94a6;
+    --green:#5fae78;
+    --gold:#cf9f4f;
+    --terracotta:#bd6f42;
+    --border:#d6dee8;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    min-height:100vh;
+    font-family:'Segoe UI', Tahoma, sans-serif;
+    background:var(--bg-color);
+    color:var(--text-color);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:40px 20px;
+  }
+  .dashboard{
+    width:100%;
+    max-width:1080px;
+  }
+  .title{
+    text-align:center;
+    color:var(--text-color);
+    letter-spacing:6px;
+    font-size:13px;
+    margin-bottom:4px;
+    opacity:.65;
+  }
+  .title.main{
+    font-size:26px;
+    letter-spacing:8px;
+    font-weight:600;
+    margin-bottom:24px;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns: 1fr 1.6fr 1fr;
+    gap:16px;
+  }
+  .col{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .card{
+    background:var(--bg-color);
+    border-radius:20px;
+    padding:16px 18px;
+    color:var(--text-color);
+    box-shadow:var(--soft-shadow-dark), var(--soft-shadow-light);
+    border:none;
+  }
+  .card-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:11px;
+    color:var(--muted);
+    letter-spacing:1px;
+    margin-bottom:10px;
+    text-transform:uppercase;
+  }
+  .dot{
+    width:8px;height:8px;border-radius:50%;background:var(--green);
+  }
+  .stat-value{
+    font-size:32px;
+    font-weight:600;
+  }
+  .chart-wrap{
+    position:relative;
+    height:90px;
+  }
+  .chart-wrap.tall{height:120px;}
+  .chart-wrap.bar{height:140px;}
+  .center-card{
+    background:transparent;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    gap:14px;
+  }
+  .center-frame{
+    width:100%;
+    max-width:380px;
+    aspect-ratio:1/1;
+    border-radius:24px;
+    overflow:hidden;
+    padding:14px 8px 6px;
+    border:6px solid var(--bg-color);
+    box-shadow:var(--soft-shadow-dark), var(--soft-shadow-light);
+    position:relative;
+  }
+  .center-frame canvas{
+    width:100% !important;height:100% !important;
+  }
+  .center-frame .ring{
+    position:absolute;inset:-6px;
+    border-radius:24px;
+    border:2px dashed rgba(74,85,104,.15);
+    pointer-events:none;
+  }
+  .nav-pill{
+    display:flex;gap:6px;justify-content:center;margin-bottom:10px;
+  }
+  .nav-pill span{
+    width:6px;height:6px;border-radius:50%;background:rgba(74,85,104,.3);
+  }
+  .nav-pill span:first-child{background:var(--text-color);}
+  .donut-wrap{
+    position:relative;
+    height:140px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .donut-center{
+    position:absolute;
+    text-align:center;
+  }
+  .donut-center .num{font-size:26px;font-weight:700;}
+  .donut-center .lbl{font-size:10px;color:var(--muted);}
+  .list-card .row{
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:12px;padding:6px 0;border-bottom:1px solid var(--border);
+  }
+  .list-card .row:last-child{border-bottom:none;}
+  .status{width:8px;height:8px;border-radius:50%;}
+  .status.ok{background:var(--green);}
+  .status.warn{background:var(--gold);}
+  .area-card{grid-column: span 1;}
+  .knob-card{
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .knob{
+    width:46px;height:46px;border-radius:50%;
+    background:var(--bg-color);
+    box-shadow:var(--soft-shadow-dark), var(--soft-shadow-light);
+    border:2px solid transparent;
+    display:flex;align-items:center;justify-content:center;
+    font-size:10px;color:var(--muted);
+  }
+  .bottom-row{
+    display:grid;
+    grid-template-columns: 1fr 2fr;
+    gap:16px;
+    margin-top:16px;
+  }
+  .section-label{
+    color:var(--text-color);
+    opacity:.65;
+    letter-spacing:3px;
+    font-size:11px;
+    text-transform:uppercase;
+    margin:28px 0 12px 4px;
+  }
+  .grid-4{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+    margin-bottom:16px;
+  }
+  .grid-3{
+    display:grid;
+    grid-template-columns:1.3fr 1fr 1fr;
+    gap:16px;
+    margin-bottom:16px;
+  }
+  .indicator-value{
+    font-size:24px;
+    font-weight:600;
+  }
+  .indicator-sub{
+    font-size:11px;
+    color:var(--muted);
+    margin-top:4px;
+  }
+  .tag{
+    display:inline-block;
+    font-size:10px;
+    padding:2px 8px;
+    border-radius:10px;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+  }
+  .tag.bullish{background:rgba(95,174,120,.16);color:var(--green);}
+  .tag.bearish{background:rgba(189,111,66,.16);color:var(--terracotta);}
+  .tag.neutral{background:rgba(207,159,79,.16);color:var(--gold);}
+  .factor-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:10px;
+    font-size:12px;
+    padding:9px 0;
+    border-bottom:1px solid var(--border);
+  }
+  .factor-row:last-child{border-bottom:none;}
+  .factor-row .name{font-weight:600;white-space:nowrap;}
+  .factor-row .detail{color:var(--muted);font-size:11px;line-height:1.5;}
+  .sr-bar{
+    position:relative;height:6px;border-radius:4px;background:var(--bg-color);
+    box-shadow:var(--soft-shadow-inset);
+    margin:14px 0 6px;
+  }
+  .sr-bar .fill{
+    position:absolute;top:0;bottom:0;left:0;border-radius:4px;background:var(--terracotta);
+  }
+  .sr-bar .marker{
+    position:absolute;top:-5px;width:2px;height:16px;background:var(--text);opacity:.6;
+  }
+  .sr-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);}
+  .rec-badge{
+    font-size:20px;font-weight:700;text-align:center;padding:14px 0;border-radius:12px;
+    background:var(--bg-color);
+    box-shadow:var(--soft-shadow-inset);
+  }
+  .info-row{display:flex;justify-content:space-between;font-size:12px;padding:6px 0;border-bottom:1px solid var(--border);}
+  .info-row:last-child{border-bottom:none;}
+  @media (max-width:860px){
+    .grid{grid-template-columns:1fr;}
+    .bottom-row{grid-template-columns:1fr;}
+    .grid-4{grid-template-columns:repeat(2,1fr);}
+    .grid-3{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<div class="dashboard">
+  <div class="title">NVIDIA CORPORATION</div>
+  <div class="title main">NVDA</div>
+
+  <div class="grid">
+    <!-- LEFT COLUMN -->
+    <div class="col">
+      <div class="card">
+        <div class="card-header"><span>Last Price</span><span class="dot" style="background:var(--terracotta);"></span></div>
+        <div class="stat-value">$204.65</div>
+        <div style="font-size:13px;color:var(--terracotta);margin-top:2px;">-1.33% today</div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span>12-Day Momentum</span><span>06-02 → 06-17</span></div>
+        <div class="chart-wrap"><canvas id="lineSmall"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span>52-Week Range Position</span><span class="dot"></span></div>
+        <div class="donut-wrap">
+          <canvas id="donut"></canvas>
+          <div class="donut-center"><div class="num">24%</div><div class="lbl">of 52w range</div></div>
+        </div>
+      </div>
+      <div class="card list-card">
+        <div class="card-header"><span>Key Stats</span><span class="dot"></span></div>
+        <div class="row"><span>52w High</span><span>$236.26</span></div>
+        <div class="row"><span>52w Low</span><span>$194.51</span></div>
+        <div class="row"><span>Market Cap</span><span>$5.10T</span></div>
+        <div class="row"><span>1d / 5d / 1m</span><span>-1.33% / -0.11% / +1.40%</span></div>
+      </div>
+    </div>
+
+    <!-- CENTER COLUMN -->
+    <div class="col center-card">
+      <div class="nav-pill"><span></span><span></span><span></span></div>
+      <div class="center-frame" style="background:var(--card);display:flex;align-items:center;justify-content:center;">
+        <canvas id="heroChart"></canvas>
+        <div class="ring"></div>
+      </div>
+      <div class="card area-card" style="width:100%;">
+        <div class="card-header"><span>Closing Price (12 sessions)</span><span>USD</span></div>
+        <div class="chart-wrap tall"><canvas id="areaChart"></canvas></div>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="col">
+      <div class="card">
+        <div class="card-header"><span>Volume vs Avg</span><span class="dot"></span></div>
+        <div style="display:flex;gap:18px;justify-content:center;">
+          <div style="text-align:center;"><div class="knob" style="border-color:var(--green);">128.4M</div></div>
+          <div style="text-align:center;"><div class="knob" style="border-color:var(--gold);">143.3M</div></div>
+        </div>
+        <div style="display:flex;gap:24px;justify-content:center;font-size:10px;color:var(--muted);margin-top:6px;">
+          <span>Today</span><span>5d Avg</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span>Daily Volume</span><span>last 7d</span></div>
+        <div class="chart-wrap bar"><canvas id="barChart"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span>Price vs Volume Trend</span><span class="dot"></span></div>
+        <div class="chart-wrap tall"><canvas id="lineDual"></canvas></div>
+      </div>
+      <div class="card knob-card">
+        <div class="card-header" style="margin:0;"><span>Ticker</span></div>
+        <div class="knob" style="border-color:var(--terracotta);">NVDA</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Technical Indicators</div>
+  <div class="grid-4">
+    <div class="card">
+      <div class="card-header"><span>RSI (14)</span><span class="tag neutral">Neutral</span></div>
+      <div class="indicator-value">43.8</div>
+      <div class="indicator-sub">Oversold &lt;30 · Overbought &gt;70</div>
+    </div>
+    <div class="card">
+      <div class="card-header"><span>MACD</span><span class="tag bearish">Bearish</span></div>
+      <div class="indicator-value">-2.25</div>
+      <div class="indicator-sub">Signal -1.38 · Hist -0.87</div>
+    </div>
+    <div class="card">
+      <div class="card-header"><span>Stochastic %K/%D</span><span class="tag bullish">Oversold</span></div>
+      <div class="indicator-value">16.3 / 27.0</div>
+      <div class="indicator-sub">%K below 20 — possible bounce zone</div>
+    </div>
+    <div class="card">
+      <div class="card-header"><span>Bollinger Bands</span><span class="dot"></span></div>
+      <div class="indicator-value">$204.65</div>
+      <div class="indicator-sub">Upper $225.97 · Mid $212.31 · Lower $198.65</div>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-header"><span>Support / Resistance (Pivot)</span><span class="dot"></span></div>
+      <div class="sr-labels"><span>S2 $199.52</span><span>S1 $202.08</span><span>Pivot $205.65</span><span>R1 $208.21</span><span>R2 $211.78</span></div>
+      <div class="sr-bar">
+        <div class="fill" style="width:51%;"></div>
+        <div class="marker" style="left:51%;" title="Current $204.65"></div>
+      </div>
+      <div class="indicator-sub">ราคาปัจจุบัน $204.65 อยู่ใกล้ Pivot ($205.65) — ยังไม่หลุดแนวรับ S1 ($202.08)</div>
+    </div>
+    <div class="card">
+      <div class="card-header"><span>Signal</span><span class="dot"></span></div>
+      <div class="rec-badge">🟡 HOLD</div>
+      <div class="indicator-sub" style="margin-top:8px;">MACD: BEARISH ↘️<br>Stochastic: OVERSOLD<br>Score: 0</div>
+    </div>
+    <div class="card">
+      <div class="card-header"><span>Next-Day Prediction</span><span class="tag bearish">DOWN</span></div>
+      <div class="indicator-value">$202.38</div>
+      <div class="indicator-sub">Range $198.98 – $210.32 · Confidence Low · Expected move -1.11%</div>
+    </div>
+  </div>
+
+  <div class="bottom-row">
+    <div class="card">
+      <div class="card-header"><span>Company</span><span class="dot"></span></div>
+      <div class="info-row"><span>Name</span><span>NVIDIA Corporation</span></div>
+      <div class="info-row"><span>Sector</span><span>Technology</span></div>
+      <div class="info-row"><span>Industry</span><span>Semiconductors</span></div>
+      <div class="info-row"><span>Market Cap</span><span>$5.10T</span></div>
+      <div class="info-row"><span>P/E Ratio</span><span>32.26</span></div>
+      <div class="info-row"><span>Dividend Yield</span><span>N/A</span></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><span>Key Factors Driving Price</span><span class="dot"></span></div>
+      <div class="factor-row">
+        <span class="name">Trend (SMA20/SMA50)</span>
+        <span class="tag neutral">Neutral</span>
+      </div>
+      <div class="factor-row"><span class="detail">ราคาแกว่งตัวรอบเส้นค่าเฉลี่ย ยังไม่มีทิศทางชัดเจน</span></div>
+      <div class="factor-row">
+        <span class="name">RSI (14)</span>
+        <span class="tag neutral">Neutral</span>
+      </div>
+      <div class="factor-row"><span class="detail">RSI = 43.8 อยู่ในช่วงปกติ ไม่มี signal ชัดเจน</span></div>
+      <div class="factor-row">
+        <span class="name">MACD</span>
+        <span class="tag bearish">Bearish</span>
+      </div>
+      <div class="factor-row"><span class="detail">MACD (-2.251) ต่ำกว่า Signal (-1.384) — โมเมนตัมเชิงลบ</span></div>
+      <div class="factor-row">
+        <span class="name">Volume</span>
+        <span class="tag neutral">Neutral</span>
+      </div>
+      <div class="factor-row"><span class="detail">วอลุ่มปกติ (0.7x ของค่าเฉลี่ย) ยังไม่มีสัญญาณเงินไหลเข้าผิดปกติ</span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const greens = ['#5fae78','#8fc9a4'];
+  const golds = ['#cf9f4f','#e0bd7e'];
+  const muted = '#8a94a6';
+  Chart.defaults.color = muted;
+  Chart.defaults.font.family = "Segoe UI";
+
+  const noGrid = { grid:{display:false}, ticks:{display:false}, border:{display:false} };
+
+  // NVDA real market data (yfinance, last 12 sessions through 2026-06-17)
+  const nvdaDates  = ["06-02","06-03","06-04","06-05","06-08","06-09","06-10","06-11","06-12","06-15","06-16","06-17"];
+  const nvdaCloses = [222.56,214.5,218.66,205.1,208.64,208.19,200.42,204.87,205.19,212.45,207.41,204.65];
+  const nvdaVolumes = [193362900,160907000,169022200,219655500,138372800,180962500,161746600,158643200,112001800,149936700,125694100,128363500];
+  const wk52High = 236.26, wk52Low = 194.51, lastPrice = 204.65;
+  const rangePct = ((lastPrice - wk52Low) / (wk52High - wk52Low)) * 100;
+
+  // NVDA intraday 1-day data (yfinance, 5-min interval, session 2026-06-19 09:30-15:55)
+  const nvdaIntradayTimes = ["09:30","09:35","09:40","09:45","09:50","09:55","10:00","10:05","10:10","10:15","10:20","10:25","10:30","10:35","10:40","10:45","10:50","10:55","11:00","11:05","11:10","11:15","11:20","11:25","11:30","11:35","11:40","11:45","11:50","11:55","12:00","12:05","12:10","12:15","12:20","12:25","12:30","12:35","12:40","12:45","12:50","12:55","13:00","13:05","13:10","13:15","13:20","13:25","13:30","13:35","13:40","13:45","13:50","13:55","14:00","14:05","14:10","14:15","14:20","14:25","14:30","14:35","14:40","14:45","14:50","14:55","15:00","15:05","15:10","15:15","15:20","15:25","15:30","15:35","15:40","15:45","15:50","15:55"];
+  const nvdaIntradayCloses = [206.68,207.4,207.14,207.93,207.77,207.81,207.72,208.59,208.45,208.93,209.7,209.13,209.1,209.35,208.98,209.54,209.32,209.32,209.48,209.51,209.27,209.31,209.03,208.88,208.8,208.51,208.19,208.12,208.77,208.97,209.27,209.2,209.24,209.53,209.88,209.99,210.46,210.97,210.71,210.56,210.13,210.08,210.29,210.38,209.96,210.46,210.08,210.06,210.4,210.23,210.14,210.04,209.99,209.91,209.66,209.76,209.72,209.85,210.16,210.2,210.34,210.1,210.16,209.96,209.78,209.7,209.88,210.12,210.06,210.11,209.97,209.85,209.78,210.22,210.15,210.15,211.07,210.23];
+
+  new Chart(document.getElementById('heroChart'), {
+    type:'line',
+    data:{
+      labels:nvdaIntradayTimes,
+      datasets:[{
+        data:nvdaIntradayCloses,
+        borderColor:'#bd6f42',
+        backgroundColor:'rgba(207,159,79,0.22)',
+        fill:true, tension:.35, pointRadius:0, borderWidth:3
+      }]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      layout:{padding:{top:4,right:6,bottom:0,left:0}},
+      plugins:{legend:{display:false}, tooltip:{enabled:false}},
+      scales:{
+        x:{
+          display:true,
+          ticks:{color:muted, font:{size:9}, maxTicksLimit:6, maxRotation:0},
+          grid:{display:false},
+          border:{color:'#d6dee8'},
+          title:{display:true, text:'เวลา', color:muted, font:{size:9}}
+        },
+        y:{
+          display:true,
+          position:'right',
+          ticks:{color:muted, font:{size:9}, maxTicksLimit:5, callback:v => '$'+v},
+          grid:{color:'#e4e9f0'},
+          border:{display:false},
+          title:{display:true, text:'ราคา', color:muted, font:{size:9}}
+        }
+      },
+      elements:{line:{borderJoinStyle:'round'}}
+    }
+  });
+
+  new Chart(document.getElementById('lineSmall'), {
+    type:'line',
+    data:{
+      labels:nvdaDates,
+      datasets:[{
+        data:nvdaCloses,
+        borderColor:'#bd6f42',
+        backgroundColor:'transparent',
+        tension:.4,
+        pointRadius:0,
+        borderWidth:2
+      }]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{x:noGrid, y:noGrid}
+    }
+  });
+
+  new Chart(document.getElementById('donut'), {
+    type:'doughnut',
+    data:{
+      labels:['Above Low','Remaining to High'],
+      datasets:[{
+        data:[rangePct, 100 - rangePct],
+        backgroundColor:[greens[0], '#d6dee8'],
+        borderWidth:0,
+        cutout:'72%'
+      }]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false}}
+    }
+  });
+
+  new Chart(document.getElementById('barChart'), {
+    type:'bar',
+    data:{
+      labels:nvdaDates.slice(-7),
+      datasets:[
+        {data:nvdaVolumes.slice(-7).map(v => v/1e6), backgroundColor:golds[0], borderRadius:4}
+      ]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{x:noGrid, y:noGrid}
+    }
+  });
+
+  new Chart(document.getElementById('lineDual'), {
+    type:'line',
+    data:{
+      labels:nvdaDates,
+      datasets:[
+        {data:nvdaCloses, borderColor:greens[0], backgroundColor:'transparent', tension:.4, pointRadius:0, borderWidth:2, yAxisID:'y'},
+        {data:nvdaVolumes.map(v => v/1e6), borderColor:golds[0], backgroundColor:'transparent', tension:.4, pointRadius:0, borderWidth:2, yAxisID:'y1'}
+      ]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{x:noGrid, y:{display:false}, y1:{display:false, position:'right'}}
+    }
+  });
+
+  new Chart(document.getElementById('areaChart'), {
+    type:'line',
+    data:{
+      labels:nvdaDates,
+      datasets:[
+        {
+          label:'NVDA Close',
+          data:nvdaCloses,
+          borderColor:'#bd6f42',
+          backgroundColor:'rgba(189,111,66,0.25)',
+          fill:true, tension:.4, pointRadius:0, borderWidth:2
+        }
+      ]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{x:noGrid, y:noGrid},
+      interaction:{intersect:false}
+    }
+  });
+</script>
+</body>
+</html>
