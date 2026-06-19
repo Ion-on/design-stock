@@ -1,0 +1,9 @@
+yfinance>=0.2.32
+pandas>=2.0.0
+numpy>=1.24.0
+Flask>=3.0.0
+flask-cors>=4.0.0
+streamlit>=1.28.0
+plotly>=5.17.0
+pandas-ta>=0.3.14b0
+feedparser>=6.0.10

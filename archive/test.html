@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test</title>
+</head>
+<body>
+  <h1 style="color: green;">✅ ถ้าเห็นข้อความนี้ = browser ทำงานปกติ</h1>
+  <p>เวลา: <span id="t"></span></p>
+  <script>
+    document.getElementById('t').textContent = new Date().toLocaleTimeString();
+    console.log('JavaScript ทำงาน');
+  </script>
+</body>
+</html>
