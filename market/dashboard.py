@@ -166,13 +166,13 @@ def render_dashboard_html(market_data, factors, outlook, manual_factors=None, ge
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
   :root{{
-    --bg-color:#eef2f7;
-    --text-color:#4a5568;
-    --soft-shadow-dark: 8px 8px 16px rgba(163, 177, 198, 0.5);
-    --soft-shadow-light: -8px -8px 16px rgba(255, 255, 255, 0.8);
-    --soft-shadow-inset: inset 4px 4px 8px rgba(163, 177, 198, 0.5), inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+    --bg-color:#e9f7f6;
+    --text-color:#4f6361;
+    --soft-shadow-dark: 8px 8px 16px rgba(136, 168, 165, 0.35);
+    --soft-shadow-light: -8px -8px 16px rgba(255, 255, 255, 0.85);
+    --soft-shadow-inset: inset 4px 4px 8px rgba(136, 168, 165, 0.35), inset -4px -4px 8px rgba(255, 255, 255, 0.85);
     --bg:var(--bg-color); --card:var(--bg-color); --text:var(--text-color);
-    --muted:#8a94a6; --green:#5fae78; --gold:#cf9f4f; --terracotta:#bd6f42; --border:#d6dee8;
+    --muted:#84a09d; --green:#88a8a5; --gold:#dcc857; --terracotta:#cf8f93; --border:#cfe6e4;
   }}
   *{{box-sizing:border-box;}}
   body{{margin:0;min-height:100vh;font-family:'Segoe UI', Tahoma, sans-serif;background:var(--bg-color);color:var(--text-color);display:flex;align-items:center;justify-content:center;padding:40px 20px;}}
@@ -203,9 +203,9 @@ def render_dashboard_html(market_data, factors, outlook, manual_factors=None, ge
   .indicator-value{{font-size:22px;font-weight:600;}}
   .indicator-sub{{font-size:11px;color:var(--muted);margin-top:4px;}}
   .tag{{display:inline-block;font-size:10px;padding:2px 8px;border-radius:10px;text-transform:uppercase;letter-spacing:.5px;}}
-  .tag.bullish{{background:rgba(95,174,120,.16);color:var(--green);}}
-  .tag.bearish{{background:rgba(189,111,66,.16);color:var(--terracotta);}}
-  .tag.neutral{{background:rgba(207,159,79,.16);color:var(--gold);}}
+  .tag.bullish{{background:rgba(136,168,165,.20);color:var(--green);}}
+  .tag.bearish{{background:rgba(207,143,147,.22);color:var(--terracotta);}}
+  .tag.neutral{{background:rgba(220,200,87,.22);color:var(--gold);}}
   .factor-row{{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;font-size:12px;padding:9px 0;border-bottom:1px solid var(--border);}}
   .factor-row:last-child{{border-bottom:none;}}
   .factor-row .name{{font-weight:600;white-space:nowrap;}}
@@ -312,7 +312,7 @@ def render_dashboard_html(market_data, factors, outlook, manual_factors=None, ge
 </div>
 
 <script>
-  const muted = '#8a94a6';
+  const muted = '#84a09d';
   Chart.defaults.color = muted;
   Chart.defaults.font.family = "Segoe UI";
   const noGrid = {{ grid:{{display:false}}, ticks:{{display:false}}, border:{{display:false}} }};
@@ -329,14 +329,14 @@ def render_dashboard_html(market_data, factors, outlook, manual_factors=None, ge
 
   new Chart(document.getElementById('heroChart'), {{
     type:'line',
-    data:{{ labels:heroTimes, datasets:[{{ data:heroCloses, borderColor:'#bd6f42', backgroundColor:'rgba(207,159,79,0.22)', fill:true, tension:.35, pointRadius:0, borderWidth:3 }}] }},
+    data:{{ labels:heroTimes, datasets:[{{ data:heroCloses, borderColor:'#cf8f93', backgroundColor:'rgba(220,200,87,0.22)', fill:true, tension:.35, pointRadius:0, borderWidth:3 }}] }},
     options:{{
       responsive:true, maintainAspectRatio:false,
       layout:{{padding:{{top:4,right:6,bottom:0,left:0}}}},
       plugins:{{legend:{{display:false}}, tooltip:{{enabled:false}}}},
       scales:{{
-        x:{{ display:true, ticks:{{color:muted, font:{{size:9}}, maxTicksLimit:6, maxRotation:0}}, grid:{{display:false}}, border:{{color:'#d6dee8'}}, title:{{display:true, text:'เวลา', color:muted, font:{{size:9}}}} }},
-        y:{{ display:true, position:'right', ticks:{{color:muted, font:{{size:9}}, maxTicksLimit:5, callback:v => '$'+v}}, grid:{{color:'#e4e9f0'}}, border:{{display:false}}, title:{{display:true, text:'ราคาทอง', color:muted, font:{{size:9}}}} }}
+        x:{{ display:true, ticks:{{color:muted, font:{{size:9}}, maxTicksLimit:6, maxRotation:0}}, grid:{{display:false}}, border:{{color:'#cfe6e4'}}, title:{{display:true, text:'เวลา', color:muted, font:{{size:9}}}} }},
+        y:{{ display:true, position:'right', ticks:{{color:muted, font:{{size:9}}, maxTicksLimit:5, callback:v => '$'+v}}, grid:{{color:'#dff0ee'}}, border:{{display:false}}, title:{{display:true, text:'ราคาทอง', color:muted, font:{{size:9}}}} }}
       }},
       elements:{{line:{{borderJoinStyle:'round'}}}}
     }}
@@ -344,7 +344,7 @@ def render_dashboard_html(market_data, factors, outlook, manual_factors=None, ge
 
   new Chart(document.getElementById('areaChart'), {{
     type:'line',
-    data:{{ labels:goldDates, datasets:[{{ data:goldCloses, borderColor:'#bd6f42', backgroundColor:'rgba(189,111,66,0.25)', fill:true, tension:.4, pointRadius:0, borderWidth:2 }}] }},
+    data:{{ labels:goldDates, datasets:[{{ data:goldCloses, borderColor:'#cf8f93', backgroundColor:'rgba(207,143,147,0.25)', fill:true, tension:.4, pointRadius:0, borderWidth:2 }}] }},
     options:{{ responsive:true, maintainAspectRatio:false, plugins:{{legend:{{display:false}}}}, scales:{{x:noGrid, y:noGrid}}, interaction:{{intersect:false}} }}
   }});
 
@@ -355,10 +355,10 @@ def render_dashboard_html(market_data, factors, outlook, manual_factors=None, ge
       options:{{ responsive:true, maintainAspectRatio:false, plugins:{{legend:{{display:false}}}}, scales:{{x:noGrid, y:noGrid}} }}
     }});
   }}
-  smallLine('spxChart', spxCloses, '#5fae78');
-  smallLine('ixicChart', ixicCloses, '#5fae78');
-  smallLine('djiChart', djiCloses, '#5fae78');
-  smallLine('xlkChart', xlkCloses, '#5fae78');
+  smallLine('spxChart', spxCloses, '#88a8a5');
+  smallLine('ixicChart', ixicCloses, '#88a8a5');
+  smallLine('djiChart', djiCloses, '#88a8a5');
+  smallLine('xlkChart', xlkCloses, '#88a8a5');
 </script>
 </body>
 </html>

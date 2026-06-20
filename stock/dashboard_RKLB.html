@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OKLO Dashboard</title>
+<title>RKLB Dashboard</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
   :root{
@@ -98,41 +98,6 @@
   .chart-wrap.indicator{height:110px;}
   .legend-row{display:flex;gap:16px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin-top:8px;}
   .legend-row .sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:middle;}
-  .center-card{
-    background:transparent;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:flex-start;
-    gap:14px;
-  }
-  .center-frame{
-    width:100%;
-    max-width:380px;
-    aspect-ratio:1/1;
-    border-radius:24px;
-    overflow:hidden;
-    padding:14px 8px 6px;
-    border:6px solid var(--bg-color);
-    box-shadow:var(--soft-shadow-dark), var(--soft-shadow-light);
-    position:relative;
-  }
-  .center-frame canvas{
-    width:100% !important;height:100% !important;
-  }
-  .center-frame .ring{
-    position:absolute;inset:-6px;
-    border-radius:24px;
-    border:2px dashed rgba(74,85,104,.15);
-    pointer-events:none;
-  }
-  .nav-pill{
-    display:flex;gap:6px;justify-content:center;margin-bottom:10px;
-  }
-  .nav-pill span{
-    width:6px;height:6px;border-radius:50%;background:rgba(74,85,104,.3);
-  }
-  .nav-pill span:first-child{background:var(--text-color);}
   .donut-wrap{
     position:relative;
     height:140px;
@@ -152,10 +117,6 @@
   .status{width:8px;height:8px;border-radius:50%;}
   .status.ok{background:var(--green);}
   .status.warn{background:var(--gold);}
-  .area-card{grid-column: span 1;}
-  .knob-card{
-    display:flex;align-items:center;justify-content:space-between;
-  }
   .knob{
     width:46px;height:46px;border-radius:50%;
     background:var(--bg-color);
@@ -251,23 +212,23 @@
 </head>
 <body>
 <div class="dashboard">
-  <div class="title">OKLO INC.</div>
-  <div class="title main">OKLO</div>
+  <div class="title">ROCKET LAB CORPORATION</div>
+  <div class="title main">RKLB</div>
 
   <div class="grid">
     <!-- LEFT COLUMN -->
     <div class="col">
       <div class="card list-card">
         <div class="card-header"><span>Key Stats</span><span class="dot"></span></div>
-        <div class="row"><span>52w High</span><span>$193.84</span></div>
-        <div class="row"><span>52w Low</span><span>$44.88</span></div>
-        <div class="row"><span>Market Cap</span><span>$10.64B</span></div>
-        <div class="row"><span>1d / 5d / 1m</span><span>+4.0% / +6.4% / +11.9%</span></div>
+        <div class="row"><span>52w High</span><span>$151.00</span></div>
+        <div class="row"><span>52w Low</span><span>$28.44</span></div>
+        <div class="row"><span>Market Cap</span><span>$67.0B</span></div>
+        <div class="row"><span>1d / 5d / 1m</span><span>-0.7% / -6.6% / +26.8%</span></div>
       </div>
       <div class="card">
-        <div class="card-header"><span>Last Price</span><span class="dot" style="background:var(--green);"></span></div>
-        <div class="stat-value">$61.17</div>
-        <div style="font-size:13px;color:var(--green);margin-top:2px;">+4.00% today</div>
+        <div class="card-header"><span>Last Price</span><span class="dot" style="background:var(--terracotta);"></span></div>
+        <div class="stat-value">$107.24</div>
+        <div style="font-size:13px;color:var(--terracotta);margin-top:2px;">-0.69% today</div>
       </div>
       <div class="card">
         <div class="card-header"><span>15-Day Momentum</span><span>05-29 → 06-18</span></div>
@@ -277,7 +238,7 @@
         <div class="card-header"><span>52-Week Range Position</span><span class="dot"></span></div>
         <div class="donut-wrap">
           <canvas id="donut"></canvas>
-          <div class="donut-center"><div class="num">11%</div><div class="lbl">of 52w range</div></div>
+          <div class="donut-center"><div class="num">64%</div><div class="lbl">of 52w range</div></div>
         </div>
       </div>
     </div>
@@ -287,27 +248,27 @@
       <div class="card">
         <div class="card-header"><span>Fundamentals Signal ปัจจุบัน</span><span class="dot"></span></div>
         <ul style="margin:0;padding-left:18px;font-size:12px;line-height:1.65;">
-          <li>เงินสด ~$2.54B หลังเพิ่มทุน ATM $1.18B (พ.ค. 2026) — runway ยาวหลายปี แต่ capex ก่อสร้างจริงจะดัน burn สูงขึ้นมาก</li>
-          <li>พึ่งพา equity raise (ATM) เป็นหลัก → dilution risk ต่อเนื่องจนกว่าจะมีรายได้จริง</li>
-          <li>ผ่าน NRC readiness assessment Phase 1 ของ COLA ที่ INL (2025) อยู่ระหว่าง accelerated review — เคยถูกปฏิเสธคำขอรอบแรกมาแล้วในปี 2022</li>
-          <li>Pipeline ลูกค้ารวม 14+ GW (Switch, Equinix, Meta) ส่วนใหญ่ยังไม่ใช่สัญญาผูกพันทางการเงินแบบสมบูรณ์</li>
-          <li>Cornered Resource: สิทธิ์พื้นที่ DOE ที่ INL + เชื้อเพลิงรีไซเคิลที่จัดสรรเฉพาะ — คู่แข่งใหม่หาทดแทนได้ยาก</li>
+          <li>รายได้เติบโตเร่งขึ้นต่อเนื่อง — Q1 2026 โต +63.5% YoY เป็น $200.3M พร้อม backlog สูงสุดใหม่ $2.2B</li>
+          <li>Gross margin ทำสถิติสูงสุด 38.2% ใน Q1 2026 แต่ guide ว่าไตรมาสหน้าจะหดตัว ~400bps QoQ จากธุรกิจ Mynaric ที่ซื้อมาใหม่ยัง integrate ไม่เต็มที่</li>
+          <li>เงินสดแข็งแรง (~$1.48B) แต่มาจากการระดมทุนผ่าน ATM ต่อเนื่อง ไม่ใช่ free cash flow — ยัง burn เงินสดสุทธิ $77.4M ใน Q1 2026</li>
+          <li>ทุ่ม capex/M&A หนักไปทาง Neutron + เสริม Space Systems (Geost, Mynaric, อยู่ระหว่างซื้อ Motiv) แต่ Neutron เพิ่งเจอ setback ถัง Stage 1 แตกระหว่างทดสอบ เลื่อนบินครั้งแรกไป Q4 2026</li>
+          <li>Cornered Resource: หนึ่งในไม่กี่บริษัทเอกชนที่มีจรวด orbital ที่บินสำเร็จจริง + สายผลิตดาวเทียมครบวงจร ได้สัญญา SDA มูลค่า $1.3B</li>
         </ul>
       </div>
       <div class="card">
         <div class="card-header"><span>Bull Case</span><span class="tag bullish">Bull</span></div>
         <ul style="margin:0;padding-left:18px;font-size:12px;line-height:1.65;">
-          <li>Demand pipeline จับต้องได้แล้ว 14+ GW จาก data center/AI รายใหญ่ (Meta 1.2GW PPA, Switch 12GW LOI, Equinix 500MW PPA 20 ปี)</li>
-          <li>ได้แรงหนุนจาก DOE — Nuclear Safety Design Agreement (มี.ค. 2026) + อยู่ในกลุ่มที่มีสิทธิ์ loan guarantee</li>
-          <li>เงินสดแข็งแรงหลัง ATM $1.18B รันเวย์ ~7-8 ปีที่ burn rate ปัจจุบัน ลดความเสี่ยงเพิ่มทุนฉุกเฉิน</li>
+          <li>Backlog $2.2B กระจายความเสี่ยงออกจาก Electron พร้อมสัญญาใหญ่ที่สุดในประวัติศาสตร์บริษัท (Neutron 5 เที่ยวบิน + Electron 3 เที่ยวบินถึง 2029)</li>
+          <li>Electron ครองตลาด dedicated small-launch ด้วยโมเดลพรีเมียมเฉพาะทาง ไม่ต้องแข่งราคาตรงกับ SpaceX</li>
+          <li>Free cash flow burn ลดลง -32% QoQ ใน Q1 2026 และมีสภาพคล่องรวมกว่า $2B รองรับการลงทุน Neutron ต่อไปได้</li>
         </ul>
       </div>
       <div class="card">
         <div class="card-header"><span>Bear Case</span><span class="tag bearish">Bear</span></div>
         <ul style="margin:0;padding-left:18px;font-size:12px;line-height:1.65;">
-          <li>Execution risk สูง — timeline commercial operation ปลายปี 2027/ต้นปี 2028 เร่ง และคุม NRC review timeline ไม่ได้ (เคยถูกปฏิเสธมาแล้ว)</li>
-          <li>ยังไม่มีรายได้ ขาดทุนต่อเนื่อง (~$41.4M/ไตรมาส) — เติบโตด้วย dilution ผ่าน ATM ซ้ำๆ ก่อนมีรายได้จริง</li>
-          <li>คู่แข่งทุนหนารายใหญ่ (TerraPower, X-energy, Kairos) แย่งทั้งลูกค้า data center/hyperscaler และเงินทุนจากรัฐ</li>
+          <li>Neutron เลื่อนกำหนดส่งมอบซ้ำหลายครั้ง — ถังเชื้อเพลิง Stage 1 แตกระหว่างทดสอบ (ม.ค./ก.พ. 2026) เลื่อนบินครั้งแรกไปอย่างน้อย Q4 2026 ทั้งที่เป็นหัวใจของ thesis การเติบโต</li>
+          <li>เจือจางผู้ถือหุ้นต่อเนื่อง — ATM $750M และแผนระดมทุนเพิ่มถึง $3B (พ.ค. 2026) ออกหุ้นจริงแล้ว ~$474M ในเดือนเมษายน</li>
+          <li>ยังขาดทุนต่อเนื่อง (adjusted EBITDA -$11.8M) ขณะที่ SpaceX มีต้นทุนต่อกก. ต่ำกว่ามาก ($2,720 เทียบ Electron $25,000) ซึ่ง Neutron ต้องแข่งตรงกับ Falcon 9</li>
         </ul>
       </div>
     </div>
@@ -317,8 +278,8 @@
       <div class="card">
         <div class="card-header"><span>Volume vs Avg</span><span class="dot"></span></div>
         <div style="display:flex;gap:18px;justify-content:center;">
-          <div style="text-align:center;"><div class="knob" style="border-color:var(--green);">14.4M</div></div>
-          <div style="text-align:center;"><div class="knob" style="border-color:var(--gold);">12.4M</div></div>
+          <div style="text-align:center;"><div class="knob" style="border-color:var(--terracotta);">70.3M</div></div>
+          <div style="text-align:center;"><div class="knob" style="border-color:var(--gold);">43.8M</div></div>
         </div>
         <div style="display:flex;gap:24px;justify-content:center;font-size:10px;color:var(--muted);margin-top:6px;">
           <span>Today</span><span>5d Avg</span>
@@ -331,11 +292,11 @@
       <div class="card">
         <div class="card-header"><span>What to Ask Before Owning It</span><span class="dot"></span></div>
         <ul style="margin:0;padding-left:18px;font-size:12px;line-height:1.65;">
-          <li>เงินสด/runway พอถึงเมื่อไหร่ ถ้า burn rate เพิ่มช่วงก่อสร้างจริง?</li>
-          <li>ไทม์ไลน์ NRC/DOE licensing อยู่ขั้นไหน เสี่ยงล่าช้าแค่ไหน?</li>
-          <li>สัญญา Meta/Switch/Equinix เป็น binding PPA หรือยังเป็น LOI/non-binding?</li>
-          <li>รับความเสี่ยง dilution จากการเพิ่มทุนซ้ำๆ ก่อนมีรายได้จริงได้แค่ไหน?</li>
-          <li>เทคโนโลยี first-of-a-kind reactor เทียบคู่แข่งที่ milestone ไปไกลกว่า (Kairos/TerraPower) อย่างไร?</li>
+          <li>เข้าใจหรือยังว่า Neutron ยังไม่เคยบินสำเร็จเลย และกำหนด Q4 2026 เคยเลื่อนมาแล้วหลายรอบ?</li>
+          <li>พอร์ตรับความเสี่ยง dilution ได้แค่ไหน ถ้าบริษัทต้องออกหุ้นเพิ่มอีกหลายรอบ?</li>
+          <li>รู้หรือยังว่า backlog พึ่งพาสัญญารัฐบาลสหรัฐฯ มากแค่ไหน?</li>
+          <li>เข้าใจความแตกต่างระหว่าง Electron (เฉพาะทาง) กับ Neutron (แข่งกับ Falcon 9) หรือยัง?</li>
+          <li>ยอมรับกรอบเวลาถือครองกับบริษัทที่ยังขาดทุนและยังไม่ free cash flow positive ได้แค่ไหน?</li>
         </ul>
       </div>
     </div>
@@ -343,7 +304,7 @@
 
   <div class="section-label">Price Action (40 Sessions) — Candlestick + Trend + S/R</div>
   <div class="card">
-    <div class="card-header"><span>OKLO Daily Candles · SMA20/SMA50 · Pivot Levels</span><span class="dot"></span></div>
+    <div class="card-header"><span>RKLB Daily Candles · SMA20/SMA50 · Pivot Levels</span><span class="dot"></span></div>
     <div class="chart-wrap xtall"><canvas id="candleChart"></canvas></div>
     <div class="legend-row">
       <span><span class="sw" style="background:var(--green);"></span>Up candle</span>
@@ -356,7 +317,7 @@
 
   <div class="grid-3" style="grid-template-columns:1fr 1fr;margin-top:16px;">
     <div class="card">
-      <div class="card-header"><span>RSI (14)</span><span class="tag neutral">Neutral Zone</span></div>
+      <div class="card-header"><span>RSI (14)</span><span class="tag neutral">Near Oversold</span></div>
       <div class="chart-wrap indicator"><canvas id="rsiChart"></canvas></div>
       <div class="indicator-sub">เส้นประบน/ล่าง = Overbought (70) / Oversold (30)</div>
     </div>
@@ -375,122 +336,80 @@
   <div class="grid-4">
     <div class="card">
       <div class="card-header"><span>RSI (14)</span><span class="tag neutral">Neutral</span></div>
-      <div class="indicator-value">43.3</div>
+      <div class="indicator-value">31.1</div>
       <div class="indicator-sub">Oversold &lt;30 · Overbought &gt;70</div>
     </div>
     <div class="card">
       <div class="card-header"><span>MACD</span><span class="tag bearish">Bearish</span></div>
-      <div class="indicator-value">-2.00</div>
-      <div class="indicator-sub">Signal -1.80 · Hist -0.20</div>
+      <div class="indicator-value">-1.16</div>
+      <div class="indicator-sub">Signal 1.85 · Hist -3.00</div>
     </div>
     <div class="card">
-      <div class="card-header"><span>Stochastic %K/%D</span><span class="tag neutral">Neutral</span></div>
-      <div class="indicator-value">39.1 / 29.4</div>
-      <div class="indicator-sub">ยังไม่เข้าเขต oversold/overbought ชัดเจน</div>
+      <div class="card-header"><span>Stochastic %K/%D</span><span class="tag bullish">Oversold</span></div>
+      <div class="indicator-value">21.2 / 16.6</div>
+      <div class="indicator-sub">เข้าใกล้เขต oversold — อาจมีโอกาสรีบาวด์ระยะสั้น</div>
     </div>
     <div class="card">
       <div class="card-header"><span>Bollinger Bands</span><span class="dot"></span></div>
-      <div class="indicator-value">$61.17</div>
-      <div class="indicator-sub">Upper $73.19 · Mid $62.72 · Lower $52.26</div>
+      <div class="indicator-value">$107.24</div>
+      <div class="indicator-sub">Upper $151.62 · Mid $120.49 · Lower $89.36</div>
     </div>
   </div>
 
   <div class="grid-3">
     <div class="card">
       <div class="card-header"><span>Support / Resistance (Pivot)</span><span class="dot"></span></div>
-      <div class="sr-labels"><span>S2 $56.47</span><span>S1 $58.82</span><span>Pivot $60.91</span><span>R1 $63.26</span><span>R2 $65.35</span></div>
+      <div class="sr-labels"><span>S2 $97.33</span><span>S1 $102.28</span><span>Pivot $105.92</span><span>R1 $110.87</span><span>R2 $114.51</span></div>
       <div class="sr-bar">
-        <div class="fill" style="width:53%;"></div>
-        <div class="marker" style="left:53%;" title="Current $61.17"></div>
+        <div class="fill" style="width:58%;"></div>
+        <div class="marker" style="left:58%;" title="Current $107.24"></div>
       </div>
-      <div class="indicator-sub">ราคาปัจจุบัน $61.17 อยู่เหนือ Pivot ($60.91) เล็กน้อย — ยังไม่ทดสอบแนวต้าน R1 ($63.26)</div>
+      <div class="indicator-sub">ราคาปัจจุบัน $107.24 อยู่เหนือ Pivot ($105.92) เล็กน้อย — ยังไม่ทดสอบแนวต้าน R1 ($110.87)</div>
     </div>
     <div class="card">
       <div class="card-header"><span>Signal</span><span class="dot"></span></div>
       <div class="rec-badge">🟡 HOLD</div>
-      <div class="indicator-sub" style="margin-top:8px;">MACD: BEARISH ↘️<br>Trend: ใต้ SMA20/SMA50<br>Score: -1</div>
+      <div class="indicator-sub" style="margin-top:8px;">MACD: BEARISH ↘️<br>Trend: ใต้ SMA20 แต่เหนือ SMA50<br>Score: -1</div>
     </div>
     <div class="card">
-      <div class="card-header"><span>Next-Day Prediction (Technical Only)</span><span class="tag neutral">SIDEWAYS</span></div>
-      <div class="indicator-value">$61.17</div>
-      <div class="indicator-sub">Range $57.20 – $65.14 · Confidence Low · Volatility สูง 103%/ปี</div>
-    </div>
-  </div>
-
-  <div class="section-label">Recent News & Event-Adjusted Forecast</div>
-  <div class="bottom-row" style="grid-template-columns:1.1fr 1fr;">
-    <div class="card">
-      <div class="card-header"><span>Recent News & Catalysts (2 สัปดาห์ล่าสุด)</span><span class="dot"></span></div>
-      <div class="factor-row">
-        <span class="name">18 มิ.ย. 2026 — Centrus Energy LOI</span>
-        <span class="tag bullish">Bullish</span>
-      </div>
-      <div class="factor-row"><span class="detail">เซ็น LOI จัดหาเชื้อเพลิง HALEU ในประเทศ แก้ pain point เชื้อเพลิงขาดแคลนของอุตสาหกรรม — ราคาหุ้นตอบสนองบวกวันที่ประกาศ</span></div>
-      <div class="factor-row">
-        <span class="name">4-8 มิ.ย. 2026 — ซื้อ ARMEC Corp</span>
-        <span class="tag bullish">Bullish</span>
-      </div>
-      <div class="factor-row"><span class="detail">ขยายกำลังผลิตแบบ vertically-integrated (precision manufacturing, 40 คน, Oak Ridge) หุ้น +4% ช่วง premarket วันประกาศ</span></div>
-      <div class="factor-row">
-        <span class="name">พ.ค. 2026 — NRC อนุมัติ PDC เร่งกระบวนการ</span>
-        <span class="tag bullish">Bullish</span>
-      </div>
-      <div class="factor-row"><span class="detail">ลดความเสี่ยง timeline licensing ของ Aurora Powerhouse ลงได้บางส่วน</span></div>
-      <div class="factor-row">
-        <span class="name">YTD Performance</span>
-        <span class="tag bearish">Bearish</span>
-      </div>
-      <div class="factor-row"><span class="detail">ราคายังติดลบ &gt;20% จากต้นปี แม้มีข่าวบวกต่อเนื่อง — ตลาดยังกังวล cash burn/dilution มากกว่าให้น้ำหนักข่าว partnership (รูปแบบเดียวกับตอน Q1 2026 earnings ที่หุ้นร่วง 10.84% ทั้งที่ EPS ตรงคาด)</span></div>
-      <div class="indicator-sub" style="margin-top:6px;">Earnings ครั้งถัดไป: 18 ส.ค. 2026 — ไม่ใช่ตัวแปรสำหรับกรอบเวลา 1-3 วันนี้</div>
-    </div>
-    <div class="card">
-      <div class="card-header"><span>News-Adjusted Next-Day Outlook</span><span class="tag neutral">SIDEWAYS-TO-UP</span></div>
-      <div class="rec-badge" style="font-size:16px;">เทคนิคลบ + ข่าวบวกสะสม → ดาวน์ไซด์จำกัด</div>
-      <div class="sr-labels" style="margin-top:8px;"><span>S2 $56.47</span><span>S1 $58.82</span><span>Pivot $60.91</span><span>R1 $63.26</span><span>R2 $65.35</span></div>
-      <div class="sr-bar">
-        <div class="fill" style="width:53%;"></div>
-        <div class="marker" style="left:53%;" title="Current $61.17"></div>
-      </div>
-      <div class="indicator-sub" style="margin-top:8px;line-height:1.6;">
-        สัญญาณเทคนิคล้วน (RSI/MACD/Trend) ชี้ SIDEWAYS-to-DOWN แต่ข่าวบวก 3 เรื่องในรอบ 2 สัปดาห์ (Centrus, ARMEC, NRC PDC) อาจหนุน sentiment ให้ downside จำกัดกว่ากรอบเทคนิคเดิม ($57.20-$65.14)<br><br>
-        ถ้ามีข่าวใหม่มาแทรก (เช่น ดีล DOE Surplus Plutonium สำเร็จ หรือ LOI ลูกค้าใหม่) มีโอกาสทะลุแนวต้าน R1 ($63.26) ไปทดสอบ R2 ($65.35) เร็วกว่าคาด หากไม่มีข่าวใหม่และหลุดแนวรับ S1 ($58.82) ควรระวังแรงขายต่อเนื่องไปทดสอบ S2 ($56.47)<br><br>
-        <b>หมายเหตุ:</b> เป็นการประเมินเชิงคุณภาพผสมเทคนิคด้วยมือ ไม่ใช่โมเดล quant ที่ backtest แล้ว — ใช้เป็นบริบท ไม่ใช่ตัวเลขที่แม่นยำ
-      </div>
+      <div class="card-header"><span>Next-Day Prediction</span><span class="tag neutral">SIDEWAYS</span></div>
+      <div class="indicator-value">$107.24</div>
+      <div class="indicator-sub">Range $99.94 – $114.53 · Confidence Low · Volatility สูง 108%/ปี</div>
     </div>
   </div>
 
   <div class="bottom-row">
     <div class="card">
       <div class="card-header"><span>Company</span><span class="dot"></span></div>
-      <div class="info-row"><span>Name</span><span>Oklo Inc.</span></div>
-      <div class="info-row"><span>Sector</span><span>Utilities</span></div>
-      <div class="info-row"><span>Industry</span><span>Independent Power Producers</span></div>
-      <div class="info-row"><span>Market Cap</span><span>$10.64B</span></div>
-      <div class="info-row"><span>P/E Ratio</span><span>N/A (pre-revenue)</span></div>
+      <div class="info-row"><span>Name</span><span>Rocket Lab Corp.</span></div>
+      <div class="info-row"><span>Sector</span><span>Industrials</span></div>
+      <div class="info-row"><span>Industry</span><span>Aerospace & Defense</span></div>
+      <div class="info-row"><span>Market Cap</span><span>$67.0B</span></div>
+      <div class="info-row"><span>P/E Ratio</span><span>N/A (ยังขาดทุนสุทธิ)</span></div>
       <div class="info-row"><span>Dividend Yield</span><span>N/A</span></div>
     </div>
     <div class="card">
       <div class="card-header"><span>Key Factors Driving Price</span><span class="dot"></span></div>
       <div class="factor-row">
         <span class="name">Trend (SMA20/SMA50)</span>
-        <span class="tag bearish">Bearish</span>
+        <span class="tag neutral">Mixed</span>
       </div>
-      <div class="factor-row"><span class="detail">ราคา ($61.17) อยู่ใต้ SMA20 ($62.72) และ SMA50 ($65.03) — แนวโน้มขาลงระยะสั้น</span></div>
+      <div class="factor-row"><span class="detail">ราคา ($107.24) อยู่ใต้ SMA20 ($120.49) แต่ยังเหนือ SMA50 ($103.91) — พักฐานจากจุดสูงช่วงกลางเดือน พ.ค. แต่แนวโน้มกลาง-ยาวยังไม่หักหัวลง</span></div>
       <div class="factor-row">
         <span class="name">RSI (14)</span>
-        <span class="tag neutral">Neutral</span>
+        <span class="tag neutral">Near Oversold</span>
       </div>
-      <div class="factor-row"><span class="detail">RSI = 43.3 อยู่ในช่วงปกติ ไม่มี signal ชัดเจน</span></div>
+      <div class="factor-row"><span class="detail">RSI = 31.1 ใกล้เขต Oversold (&lt;30) หลังราคาปรับฐานต่อเนื่องจากพีคเดือน พ.ค.</span></div>
       <div class="factor-row">
         <span class="name">MACD</span>
         <span class="tag bearish">Bearish</span>
       </div>
-      <div class="factor-row"><span class="detail">MACD (-1.997) ต่ำกว่า Signal (-1.800) — โมเมนตัมเชิงลบ</span></div>
+      <div class="factor-row"><span class="detail">MACD (-1.155) ต่ำกว่า Signal (1.846) และ histogram ติดลบต่อเนื่อง — โมเมนตัมขาลงระยะสั้นยังไม่กลับตัว</span></div>
       <div class="factor-row">
         <span class="name">Volatility</span>
         <span class="tag bearish">High Risk</span>
       </div>
-      <div class="factor-row"><span class="detail">Volatility สูง (103%/ปี) — ความเสี่ยงสวิงราคาแรงทั้งสองทาง ควรคุม position size</div>
+      <div class="factor-row"><span class="detail">Volatility สูง (108%/ปี) — ความเสี่ยงสวิงราคาแรงทั้งสองทาง ควรคุม position size</div>
     </div>
   </div>
 </div>
@@ -504,26 +423,26 @@
 
   const noGrid = { grid:{display:false}, ticks:{display:false}, border:{display:false} };
 
-  // OKLO real market data (yfinance, last 15 sessions through 2026-06-18)
-  const okloDates  = ["05-29","06-01","06-02","06-03","06-04","06-05","06-08","06-09","06-10","06-11","06-12","06-15","06-16","06-17","06-18"];
-  const okloCloses = [66.88,66.89,73.47,65.21,65.39,58.09,58.94,56.48,54.02,57.86,57.49,60.74,57.45,58.82,61.17];
-  const okloVolumes = [27669400,18846300,24065100,22785200,11973900,18896500,8918000,12403300,8300400,10687800,8173100,9642900,8810900,10794600,14444000];
-  const wk52High = 193.84, wk52Low = 44.88, lastPrice = 61.17;
+  // RKLB real market data (yfinance, last 15 sessions through 2026-06-18)
+  const rklbDates  = ["05-29","06-01","06-02","06-03","06-04","06-05","06-08","06-09","06-10","06-11","06-12","06-15","06-16","06-17","06-18"];
+  const rklbCloses = [143.48,122.39,123.32,114.7,119.95,110.08,113.65,108.23,105.05,114.78,102.39,109.25,104.63,107.98,107.24];
+  const rklbVolumes = [34878600,37294600,19498000,21579800,24826300,21477400,13433200,23730200,13000800,26119300,62987600,28928300,27885000,28723000,70326000];
+  const wk52High = 151.0, wk52Low = 28.44, lastPrice = 107.24;
   const rangePct = ((lastPrice - wk52Low) / (wk52High - wk52Low)) * 100;
 
-  // OKLO daily OHLCV + indicators, last 40 sessions (yfinance, 04-23 -> 06-18 2026)
+  // RKLB daily OHLCV + indicators, last 40 sessions (yfinance, 04-23 -> 06-18 2026)
   const candleDates = ["04-23","04-24","04-27","04-28","04-29","04-30","05-01","05-04","05-05","05-06","05-07","05-08","05-11","05-12","05-13","05-14","05-15","05-18","05-19","05-20","05-21","05-22","05-26","05-27","05-28","05-29","06-01","06-02","06-03","06-04","06-05","06-08","06-09","06-10","06-11","06-12","06-15","06-16","06-17","06-18"];
-  const candleOpen  = [77.73,81.29,71.0,71.51,70.54,65.54,71.68,70.45,69.01,71.21,78.0,73.7,71.41,75.73,73.37,67.39,64.8,62.45,56.73,57.56,61.92,66.82,71.87,69.34,66.48,68.09,65.9,67.1,70.72,64.51,64.8,60.1,59.01,55.43,54.15,58.05,60.48,59.94,57.02,59.83];
-  const candleHigh  = [80.64,81.5,76.2,72.87,70.6,72.84,71.68,72.3,69.24,80.08,79.5,74.0,79.65,76.68,73.4,67.7,65.0,63.0,57.77,62.9,65.29,69.72,73.29,69.52,70.98,70.01,70.6,73.86,70.85,66.57,64.81,60.35,59.88,57.88,58.24,58.58,61.98,61.95,61.69,63.0];
-  const candleLow   = [73.66,70.88,70.3,68.79,63.2,65.26,68.47,68.5,66.08,69.25,70.87,70.0,69.22,70.3,68.1,64.66,61.73,56.8,53.96,56.64,61.1,65.13,68.08,65.37,65.62,64.28,64.57,65.66,64.05,63.33,56.62,58.0,53.01,53.83,53.42,55.88,59.81,57.33,56.83,58.56];
-  const candleClose = [76.46,71.0,75.93,69.09,64.98,72.5,70.4,68.6,68.38,79.62,71.83,72.51,78.13,73.63,69.66,67.21,62.25,58.56,55.88,62.58,65.09,65.88,68.7,67.82,68.09,66.88,66.89,73.47,65.21,65.39,58.09,58.94,56.48,54.02,57.86,57.49,60.74,57.45,58.82,61.17];
-  const candleSma20 = [NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,69.46,68.89,68.64,68.27,68.21,68.37,68.08,67.91,68.15,67.99,67.28,66.6,65.92,64.83,63.85,63.26,62.78,62.7,62.65,62.79,62.72];
-  const candleSma50 = [NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,66.09];
-  const candleRsi   = [NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,NaN,47.75,44.91,47.03,39.28,41.32,42.32,41.51,45.49,47.65,50.26,38.21,45.6,43.46,34.99,49.8,44.92,47.81,45.26,50.46,50.73,38.3,40.46,38.81,39.5,37.14,38.81,43.29];
-  const candleMacd  = [0.0,-0.122,-0.003,-0.196,-0.46,-0.288,-0.269,-0.337,-0.39,0.158,0.136,0.155,0.485,0.465,0.208,-0.138,-0.707,-1.367,-2.029,-2.079,-1.926,-1.732,-1.369,-1.131,-0.915,-0.82,-0.736,-0.192,-0.36,-0.474,-1.092,-1.499,-1.983,-2.521,-2.625,-2.704,-2.49,-2.543,-2.451,-2.171];
-  const candleSignal= [0.0,-0.068,-0.041,-0.094,-0.203,-0.226,-0.237,-0.261,-0.291,-0.19,-0.119,-0.06,0.055,0.141,0.155,0.095,-0.069,-0.334,-0.678,-0.961,-1.156,-1.272,-1.292,-1.259,-1.19,-1.116,-1.04,-0.87,-0.768,-0.709,-0.786,-0.928,-1.139,-1.416,-1.658,-1.867,-1.992,-2.102,-2.172,-2.172];
-  const candleHist  = [0.0,-0.054,0.038,-0.102,-0.257,-0.062,-0.032,-0.076,-0.099,0.348,0.255,0.215,0.43,0.324,0.053,-0.233,-0.638,-1.033,-1.351,-1.118,-0.77,-0.46,-0.077,0.128,0.275,0.296,0.304,0.678,0.408,0.235,-0.306,-0.571,-0.844,-1.105,-0.967,-0.837,-0.498,-0.441,-0.279,0.001];
-  const pivotLevel = 60.91, r1Level = 63.26, s1Level = 58.82;
+  const candleOpen  = [89.85,86.34,79.69,80.07,77.86,77.55,83.53,78.36,82.6,79.62,84.71,86.04,105.27,112.76,123.89,123.1,128.1,132.76,125.97,127.48,126.14,131.41,141.96,149.72,147.17,139.94,132.38,125.34,119.58,113.08,114.27,114.67,118.4,107.7,106.59,118.02,107.96,107.71,104.12,108.83];
+  const candleHigh  = [90.3,86.41,82.48,81.78,78.01,83.59,83.79,81.83,83.0,84.68,84.79,105.62,123.94,121.49,127.24,133.18,130.37,138.38,129.57,135.35,130.87,139.76,146.0,151.0,150.83,144.0,135.63,128.4,122.5,122.63,117.98,116.25,119.79,111.96,115.04,118.38,110.78,108.5,111.34,109.55];
+  const candleLow   = [81.57,79.08,77.05,77.6,73.99,77.47,78.43,76.25,76.56,78.86,77.93,85.87,104.0,112.41,116.89,121.31,121.8,125.67,115.23,124.22,123.8,131.31,138.56,137.91,142.37,134.05,121.0,122.56,113.66,110.39,106.73,111.0,101.2,104.41,105.4,99.61,105.8,103.07,104.04,100.96];
+  const candleClose = [84.6,79.68,82.29,78.59,77.02,82.51,78.81,80.31,78.76,84.65,78.58,105.47,117.35,117.56,124.15,132.55,124.77,131.16,127.31,134.28,125.45,135.76,143.2,150.23,148.03,143.48,122.39,123.32,114.7,119.95,110.08,113.65,108.23,105.05,114.78,102.39,109.25,104.63,107.98,107.24];
+  const candleSma20 = [72.72,73.41,74.48,75.54,76.18,77.03,77.58,78.22,78.84,79.62,80.21,82.08,84.42,86.68,89.21,91.69,93.69,95.77,97.81,100.02,102.06,104.87,107.91,111.49,115.04,118.09,120.27,122.42,124.22,125.98,127.56,127.97,127.51,126.89,126.42,124.91,124.13,122.81,121.84,120.49];
+  const candleSma50 = [NaN,NaN,NaN,NaN,NaN,72.44,72.48,72.67,72.84,73.14,73.3,73.96,74.93,75.86,76.94,78.15,79.25,80.47,81.58,82.89,83.96,85.31,86.8,88.38,89.77,91.25,92.26,93.38,94.32,95.39,96.14,97.09,98.04,98.99,100.0,100.74,101.57,102.31,103.14,103.91];
+  const candleRsi   = [70.63,63.13,66.99,59.92,60.89,64.08,57.8,57.72,54.91,51.75,44.17,60.6,68.15,66.9,73.95,80.72,73.28,77.99,76.14,76.5,72.68,74.84,77.42,77.64,80.26,70.56,52.48,52.81,45.47,43.78,42.89,41.29,40.65,35.13,44.62,33.52,33.14,26.8,29.86,31.05];
+  const candleMacd  = [4.731,4.328,4.167,3.704,3.177,3.157,2.815,2.633,2.339,2.545,2.199,4.021,6.34,8.1,9.907,11.874,12.663,13.643,13.95,14.584,14.214,14.58,15.29,16.231,16.607,16.352,14.289,12.585,10.42,9.023,7.041,5.691,4.138,2.621,2.177,0.818,0.29,-0.495,-0.838,-1.155];
+  const candleSignal= [2.749,3.065,3.285,3.369,3.331,3.296,3.2,3.086,2.937,2.858,2.726,2.985,3.656,4.545,5.618,6.869,8.028,9.151,10.111,11.005,11.647,12.234,12.845,13.522,14.139,14.582,14.523,14.135,13.392,12.519,11.423,10.277,9.049,7.763,6.646,5.48,4.442,3.455,2.596,1.846];
+  const candleHist  = [1.982,1.263,0.881,0.335,-0.154,-0.139,-0.384,-0.453,-0.598,-0.314,-0.528,1.036,2.684,3.555,4.29,5.005,4.636,4.492,3.84,3.579,2.567,2.346,2.445,2.708,2.468,1.77,-0.234,-1.551,-2.972,-3.495,-4.382,-4.585,-4.911,-5.143,-4.469,-4.663,-4.152,-3.95,-3.434,-3.001];
+  const pivotLevel = 105.92, r1Level = 110.87, s1Level = 102.28;
   const N = candleDates.length;
   const flat = v => new Array(N).fill(v);
   const candleColors = candleClose.map((c,i) => c >= candleOpen[i] ? '#88a8a5' : '#cf8f93');
@@ -531,10 +450,10 @@
   new Chart(document.getElementById('lineSmall'), {
     type:'line',
     data:{
-      labels:okloDates,
+      labels:rklbDates,
       datasets:[{
-        data:okloCloses,
-        borderColor:'#88a8a5',
+        data:rklbCloses,
+        borderColor:'#cf8f93',
         backgroundColor:'transparent',
         tension:.4,
         pointRadius:0,
@@ -568,10 +487,10 @@
   new Chart(document.getElementById('lineDual'), {
     type:'line',
     data:{
-      labels:okloDates,
+      labels:rklbDates,
       datasets:[
-        {data:okloCloses, borderColor:greens[0], backgroundColor:'transparent', tension:.4, pointRadius:0, borderWidth:2, yAxisID:'y'},
-        {data:okloVolumes.map(v => v/1e6), borderColor:golds[0], backgroundColor:'transparent', tension:.4, pointRadius:0, borderWidth:2, yAxisID:'y1'}
+        {data:rklbCloses, borderColor:greens[0], backgroundColor:'transparent', tension:.4, pointRadius:0, borderWidth:2, yAxisID:'y'},
+        {data:rklbVolumes.map(v => v/1e6), borderColor:golds[0], backgroundColor:'transparent', tension:.4, pointRadius:0, borderWidth:2, yAxisID:'y1'}
       ]
     },
     options:{

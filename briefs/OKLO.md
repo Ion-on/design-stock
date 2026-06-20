@@ -42,5 +42,27 @@ Oklo เป็นบริษัทพัฒนาเครื่องปฏิ
 - เรารับความเสี่ยง dilution จากการเพิ่มทุนซ้ำๆ ก่อนมีรายได้จริงได้มากแค่ไหน และจะ tolerate การถือนานกี่ปีโดยไม่มีรายได้
 - ความเสี่ยงเชิงเทคโนโลยี first-of-a-kind reactor เทียบกับคู่แข่งที่มี milestone ไปไกลกว่า (เช่น Kairos/TerraPower ที่ได้ permit ก่อสร้างแล้ว) ส่งผลต่อความได้เปรียบในการแข่งขันของ Oklo อย่างไร
 
+## 7. Recent news (สัปดาห์ที่ผ่านมา) และคาดการณ์ราคาวันถัดไป
+
+**สรุปข่าว/เหตุการณ์ล่าสุด:**
+- **18 มิ.ย. 2026** — Oklo เซ็น LOI (letter of intent) กับ Centrus Energy เพื่อจัดหาเชื้อเพลิง HALEU ในประเทศให้กับเครื่องปฏิกรณ์ในอนาคต แก้ pain point สำคัญของอุตสาหกรรม advanced nuclear คือ การขาดแคลนเชื้อเพลิง HALEU ราคาหุ้นตอบสนองเชิงบวกในวันนั้น
+- **4-8 มิ.ย. 2026** — Oklo เข้าซื้อ ARMEC Corporation บริษัทผลิตชิ้นส่วนความเที่ยงตรงสูง (precision manufacturing) สำหรับอุตสาหกรรมนิวเคลียร์ ที่ Oak Ridge มีพนักงาน 40 คน เพื่อขยายความสามารถผลิตแบบ vertically-integrated ทั้ง reactor และ fuel-fabrication — ราคาหุ้นปรับขึ้นราว 4% ในช่วง premarket วันที่ประกาศ (ไม่เปิดเผยมูลค่าดีล)
+- **พ.ค. 2026** — NRC อนุมัติ Principal Design Criteria (PDC) topical report สำหรับ Aurora Powerhouse แบบเร่งกระบวนการ (accelerated review) สอดคล้องกับนโยบายปรับปรุงกระบวนการพิจารณาใบอนุญาตของ NRC ตาม executive order ปี 2025
+- Oklo ได้รับเลือกเข้าสู่การเจรจาขั้นสูง (advanced negotiations) กับ DOE ภายใต้ Surplus Plutonium Utilization Program — เพิ่มทรัพยากรเฉพาะ (Cornered Resource) อีกชั้นหนึ่งหากดีลสำเร็จ
+- ภาพรวมราคาหุ้นยังติดลบมากกว่า 20% เทียบจากต้นปี 2026 แม้จะมีข่าวบวกต่อเนื่องในช่วง 2-3 สัปดาห์ที่ผ่านมา สะท้อนว่าตลาดยังกังวลเรื่อง cash burn/dilution มากกว่าจะให้น้ำหนักกับข่าว partnership เป็นหลัก — เคยเห็นรูปแบบนี้มาแล้วตอนประกาศ Q1 2026 earnings ที่ EPS ตรงคาด แต่หุ้นร่วง 10.84% เพราะตลาดกังวล cash burn มากกว่า
+- ไม่มี earnings ใกล้นี้ — earnings ครั้งถัดไปคือ 18 ส.ค. 2026 จึงไม่ใช่ตัวแปรสำหรับการเคลื่อนไหวระยะ 1-3 วันข้างหน้า
+
+**แนวรับ-แนวต้าน (Pivot Points, อิงราคาปิด $61.17):**
+- แนวต้าน R2: **$65.35**
+- แนวต้าน R1: **$63.26** ← จุดที่ต้องจับตาที่สุดสำหรับวันถัดไป ราคายังไม่เคยทดสอบนับจากปิดตลาดล่าสุด
+- จุด Pivot: **$60.91** — ราคาปัจจุบันอยู่เหนือ pivot เล็กน้อย (~+0.4%)
+- แนวรับ S1: **$58.82**
+- แนวรับ S2: **$56.47**
+
+**คาดการณ์ราคาวันถัดไป (ผสมสัญญาณเทคนิค + ข่าว):**
+สัญญาณเทคนิคล้วน (RSI 43.3 neutral, MACD bearish, ราคาอยู่ใต้ SMA20/SMA50) ชี้ไปทาง SIDEWAYS-to-DOWN ระยะสั้น แต่ข่าวเชิงบวกต่อเนื่อง 3 เรื่องในรอบ 2 สัปดาห์ (Centrus LOI, ARMEC acquisition, NRC PDC approval) สร้าง sentiment เชิงบวกที่อาจหนุนให้ downside จำกัดกว่าที่เทคนิคบอกเพียงอย่างเดียว แนวต้านสำคัญที่ต้องจับตาคือ R1 ~$63.26 หากข่าวบวกใหม่เข้ามาแทรก (เช่น ดีล DOE Surplus Plutonium สำเร็จ หรือ LOI ใหม่กับลูกค้า data center) มีโอกาสเห็นราคาทดสอบ R1-R2 ($63-65) เร็วกว่ากรอบเทคนิคที่ประเมินไว้ ($57.20-$65.14) ในทางกลับกัน หากไม่มีข่าวใหม่ ราคามีโอกาส sideways ในกรอบเดิมตามโมเมนตัมขาลงระยะสั้นที่ยังไม่กลับตัว หากหลุดแนวรับ S1 ($58.82) ลงไป ควรระวังแรงขายต่อเนื่องไปทดสอบ S2 ($56.47)
+
+**ข้อควรระวัง:** การประเมินนี้เป็นการผสมข่าว qualitative กับสัญญาณเทคนิคด้วยมือ ไม่ใช่โมเดลเชิงปริมาณที่ผ่านการ backtest จึงควรใช้เป็นบริบทประกอบการตัดสินใจ ไม่ใช่ตัวเลขที่แม่นยำ
+
 ---
-*Sources: oklo.com newsroom, NRC.gov, INL.gov, Yahoo Finance, World Nuclear News, Power Magazine, Utility Dive, Fortune, The Motley Fool, NucNet, StockTitan SEC filings, TIKR*
+*Sources: oklo.com newsroom, NRC.gov, INL.gov, Yahoo Finance, World Nuclear News, Power Magazine, Utility Dive, Fortune, The Motley Fool, NucNet, StockTitan SEC filings, TIKR, Centrus Energy LOI coverage (Yahoo Finance), ARMEC acquisition coverage (Businesswire, Barchart, StockTitan), Investing.com / MarketChameleon earnings calendar*
