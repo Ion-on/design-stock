@@ -1,0 +1,204 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]: 🥇 XAUUSD Simulator
+    - generic [ref=e5]:
+      - generic [ref=e6]: บัญชี
+      - generic [ref=e7]: $10,000
+    - generic [ref=e8]:
+      - generic [ref=e9]: P&L
+      - generic [ref=e10]: —
+    - generic [ref=e13]: Historical Data 2012–2022
+  - generic [ref=e14]:
+    - generic [ref=e15]:
+      - generic [ref=e16]:
+        - heading "Timeframe" [level=3] [ref=e17]
+        - generic [ref=e18]:
+          - button "M5" [ref=e19] [cursor=pointer]
+          - button "M10" [ref=e20] [cursor=pointer]
+          - button "M15" [ref=e21] [cursor=pointer]
+          - button "M30" [ref=e22] [cursor=pointer]
+          - button "H1" [ref=e23] [cursor=pointer]
+          - button "H4" [ref=e24] [cursor=pointer]
+          - button "D1" [ref=e25] [cursor=pointer]
+      - generic [ref=e27]:
+        - generic [ref=e28]: รอบที่ 1 · 0/10 เสร็จ
+        - generic [ref=e29]: 0%
+      - generic [ref=e31]:
+        - generic [ref=e32] [cursor=pointer]:
+          - generic [ref=e33]: "1"
+          - generic [ref=e34]:
+            - generic [ref=e35]: May 2017
+            - generic [ref=e36]: $1267.24
+        - generic [ref=e37] [cursor=pointer]:
+          - generic [ref=e38]: "2"
+          - generic [ref=e39]:
+            - generic [ref=e40]: Nov 2015
+            - generic [ref=e41]: $1107.51
+        - generic [ref=e42] [cursor=pointer]:
+          - generic [ref=e43]: "3"
+          - generic [ref=e44]:
+            - generic [ref=e45]: Feb 2013
+            - generic [ref=e46]: $1674.25
+        - generic [ref=e47] [cursor=pointer]:
+          - generic [ref=e48]: "4"
+          - generic [ref=e49]:
+            - generic [ref=e50]: Oct 2018
+            - generic [ref=e51]: $1226.44
+        - generic [ref=e52] [cursor=pointer]:
+          - generic [ref=e53]: "5"
+          - generic [ref=e54]:
+            - generic [ref=e55]: Dec 2013
+            - generic [ref=e56]: $1229.20
+        - generic [ref=e57] [cursor=pointer]:
+          - generic [ref=e58]: "6"
+          - generic [ref=e59]:
+            - generic [ref=e60]: Aug 2019
+            - generic [ref=e61]: $1542.95
+        - generic [ref=e62] [cursor=pointer]:
+          - generic [ref=e63]: "7"
+          - generic [ref=e64]:
+            - generic [ref=e65]: Sep 2017
+            - generic [ref=e66]: $1286.98
+        - generic [ref=e67] [cursor=pointer]:
+          - generic [ref=e68]: "8"
+          - generic [ref=e69]:
+            - generic [ref=e70]: Jul 2013
+            - generic [ref=e71]: $1251.14
+        - generic [ref=e72] [cursor=pointer]:
+          - generic [ref=e73]: "9"
+          - generic [ref=e74]:
+            - generic [ref=e75]: Jul 2021
+            - generic [ref=e76]: $1813.29
+        - generic [ref=e77] [cursor=pointer]:
+          - generic [ref=e78]: "10"
+          - generic [ref=e79]:
+            - generic [ref=e80]: Jun 2015
+            - generic [ref=e81]: $1177.86
+    - generic [ref=e82]:
+      - generic [ref=e83]:
+        - heading "รอบที่ 1 · ข้อ 1/10 — H4" [level=2] [ref=e84]
+        - generic [ref=e85]: H4
+        - generic [ref=e86]: May 2017
+        - generic [ref=e87]: Real Data
+      - generic [ref=e89]:
+        - generic [ref=e90]:
+          - generic [ref=e91]: XAU/USD
+          - generic [ref=e92]: H4
+          - generic [ref=e93]: 40 แท่ง · H4
+          - generic [ref=e94]: ━ EMA9
+          - generic [ref=e95]: ━ EMA21
+          - generic [ref=e96]: ━ EMA50
+          - generic [ref=e97]: $1267.24
+          - generic [ref=e98]: "-0.75 (-0.06%)"
+        - generic [ref=e99]:
+          - generic: XAUUSD · H4 (จริง) · ราคาจริง
+        - generic [ref=e101]:
+          - generic [ref=e102]:
+            - generic [ref=e103]: Open
+            - generic [ref=e104]: —
+          - generic [ref=e105]:
+            - generic [ref=e106]: High
+            - generic [ref=e107]: —
+          - generic [ref=e108]:
+            - generic [ref=e109]: Low
+            - generic [ref=e110]: —
+          - generic [ref=e111]:
+            - generic [ref=e112]: Close
+            - generic [ref=e113]: —
+          - generic [ref=e114]:
+            - generic [ref=e115]: Date
+            - generic [ref=e116]: —
+      - generic [ref=e117]:
+        - generic [ref=e118]:
+          - generic [ref=e119]:
+            - heading "📊 วิเคราะห์ก่อนตัดสินใจ" [level=3] [ref=e120]
+            - generic [ref=e121]: Technical
+          - generic [ref=e122]:
+            - generic [ref=e123]:
+              - generic [ref=e124]:
+                - generic [ref=e125]: ━ EMA9
+                - generic [ref=e126]: $1266.54
+              - generic [ref=e127]:
+                - generic [ref=e128]: ━ EMA21
+                - generic [ref=e129]: $1267.21
+              - generic [ref=e130]:
+                - generic [ref=e131]: ━ EMA50
+                - generic [ref=e132]: $1269.55
+              - generic [ref=e133]:
+                - generic [ref=e134]: RSI(14)
+                - generic [ref=e135]: "47.7"
+            - generic [ref=e136]:
+              - generic [ref=e137]:
+                - generic [ref=e138]: ATR(14)
+                - generic [ref=e139]: $4.03
+              - generic [ref=e140]:
+                - generic [ref=e141]: Nearest S/R
+                - generic [ref=e142]: —
+            - generic [ref=e144]: Uptrend
+            - generic [ref=e145]:
+              - generic [ref=e146]: Structure
+              - generic [ref=e147]: 📈 Uptrend
+              - generic [ref=e148]: "R: $1270.54 · S: $1266.61"
+            - generic [ref=e149]:
+              - generic [ref=e150]:
+                - generic [ref=e151]: 📈 สัญญาณขึ้น
+                - generic [ref=e155]: ใกล้แนวต้าน $1270.54
+              - generic [ref=e156]:
+                - generic [ref=e157]: 📉 สัญญาณลง
+                - generic [ref=e161]: ใกล้แนวต้าน $1270.54
+            - generic [ref=e162]: 💡 ดูสัญญาณแล้วตัดสินใจ — เฉลยเหตุผลจะปรากฏหลังเปิดออเดอร์
+        - generic [ref=e163]:
+          - generic [ref=e164]:
+            - heading "ตัดสินใจ" [level=3] [ref=e165]
+            - generic [ref=e166]: PAPER TRADE
+            - generic [ref=e167]: "Entry: $1267.24"
+          - generic [ref=e168]:
+            - generic [ref=e169]:
+              - button "📈 BUY ราคาจะขึ้น" [ref=e170] [cursor=pointer]:
+                - generic [ref=e171]: 📈
+                - generic [ref=e172]: BUY
+                - generic [ref=e173]: ราคาจะขึ้น
+              - button "📉 SELL ราคาจะลง" [ref=e174] [cursor=pointer]:
+                - generic [ref=e175]: 📉
+                - generic [ref=e176]: SELL
+                - generic [ref=e177]: ราคาจะลง
+              - button "✋ WAIT ไม่ชัดเจน" [ref=e178] [cursor=pointer]:
+                - generic [ref=e179]: ✋
+                - generic [ref=e180]: WAIT
+                - generic [ref=e181]: ไม่ชัดเจน
+            - generic [ref=e182]:
+              - generic [ref=e183]:
+                - text: Lot Size
+                - generic [ref=e184]: ($5/$1 move)
+              - generic [ref=e185]:
+                - button "0.05" [ref=e186] [cursor=pointer]
+                - button "0.10" [ref=e187] [cursor=pointer]
+                - button "0.20" [ref=e188] [cursor=pointer]
+                - button "0.50" [ref=e189] [cursor=pointer]
+                - button "1.00" [ref=e190] [cursor=pointer]
+            - generic:
+              - generic:
+                - generic: Stop Loss
+                - generic:
+                  - generic: $
+                  - spinbutton
+              - generic:
+                - generic: Take Profit
+                - generic:
+                  - generic: $
+                  - spinbutton
+            - generic [ref=e191]:
+              - generic [ref=e192]:
+                - generic [ref=e193]: เสี่ยง
+                - generic [ref=e194]: —
+              - generic [ref=e195]:
+                - generic [ref=e196]: เป้าหมาย
+                - generic [ref=e197]: —
+              - generic [ref=e198]:
+                - generic [ref=e199]: RRR
+                - generic [ref=e200]: —
+              - generic [ref=e201]:
+                - generic [ref=e202]: "% พอร์ต"
+                - generic [ref=e203]: —
+            - button "เลือกทิศทางก่อน" [disabled] [ref=e204]
+      - generic [ref=e205]: ⚠️ ข้อมูลราคา XAUUSD จริง (2012–2022) เพื่อการศึกษาเท่านั้น · การลงทุนมีความเสี่ยง ผู้ลงทุนควรศึกษาข้อมูลก่อนตัดสินใจ

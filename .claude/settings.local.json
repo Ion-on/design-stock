@@ -3,7 +3,11 @@
     "allow": [
       "Skill(claude-api)",
       "Bash(git checkout *)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "WebSearch",
+      "Bash(python -c ' *)",
+      "mcp__playwright__browser_evaluate",
+      "mcp__playwright__browser_navigate"
     ]
   }
 }
